@@ -1,0 +1,218 @@
+version: 2
+
+models:
+  - name: stackadapt__advertiser_report
+    description: Daily advertiser-level performance report for StackAdapt. One row per advertiser per day.
+    columns:
+      - name: advertiser_report_id
+        description: Surrogate key derived from date_day, advertiser_id, and source_relation.
+        tests:
+          - not_null
+          - unique
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: date_day
+        description: The date for which the performance metrics are reported.
+        tests:
+          - not_null
+      - name: advertiser_id
+        description: Unique identifier for the advertiser.
+        tests:
+          - not_null
+      - name: advertiser_name
+        description: Display name of the advertiser.
+      - name: is_archived
+        description: Whether the advertiser has been archived.
+      - name: impressions
+        description: Total number of ad impressions served.
+      - name: clicks
+        description: Total number of clicks on ads.
+      - name: spend
+        description: Total spend on ad delivery.
+      - name: conversions
+        description: Total number of conversions recorded.
+
+  - name: stackadapt__campaign_group_report
+    description: Daily campaign group-level performance report for StackAdapt. One row per campaign group per day. Aggregated from campaign group-level delivery data within each campaign group.
+    columns:
+      - name: campaign_group_report_id
+        description: Surrogate key derived from date_day, campaign_group_id, and source_relation.
+        tests:
+          - not_null
+          - unique
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: date_day
+        description: The date for which the performance metrics are reported.
+        tests:
+          - not_null
+      - name: campaign_group_id
+        description: Unique identifier for the campaign group.
+        tests:
+          - not_null
+      - name: campaign_group_name
+        description: Display name of the campaign group.
+      - name: is_archived
+        description: Whether the campaign group has been archived.
+      - name: advertiser_id
+        description: Identifier for the advertiser that owns this campaign group.
+      - name: advertiser_name
+        description: Display name of the advertiser that owns this campaign group.
+      - name: impressions
+        description: Total number of ad impressions served across all campaigns in the campaign group.
+      - name: clicks
+        description: Total number of clicks on ads across all campaigns in the campaign group.
+      - name: spend
+        description: Total spend on ad delivery across all campaigns in the campaign group.
+      - name: conversions
+        description: Total number of conversions recorded across all campaigns in the campaign group.
+
+  - name: stackadapt__campaign_report
+    description: Daily campaign-level performance report for StackAdapt. One row per campaign per day.
+    columns:
+      - name: campaign_report_id
+        description: Surrogate key derived from date_day, campaign_id, and source_relation.
+        tests:
+          - not_null
+          - unique
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: date_day
+        description: The date for which the performance metrics are reported.
+        tests:
+          - not_null
+      - name: campaign_id
+        description: Unique identifier for the campaign.
+        tests:
+          - not_null
+      - name: campaign_name
+        description: Display name of the campaign.
+      - name: campaign_state
+        description: Lifecycle state of the campaign.
+      - name: campaign_status
+        description: Delivery status of the campaign.
+      - name: channel_type
+        description: The advertising channel type for this campaign.
+      - name: advertiser_id
+        description: Identifier for the advertiser that owns this campaign.
+      - name: advertiser_name
+        description: Display name of the advertiser that owns this campaign.
+      - name: campaign_group_id
+        description: Identifier for the campaign group this campaign belongs to.
+      - name: campaign_group_name
+        description: Display name of the campaign group this campaign belongs to.
+      - name: impressions
+        description: Total number of ad impressions served.
+      - name: clicks
+        description: Total number of clicks on ads.
+      - name: spend
+        description: Total spend on ad delivery.
+      - name: conversions
+        description: Total number of conversions recorded.
+
+  - name: stackadapt__url_report
+    description: Daily URL-level performance report for StackAdapt. One row per click URL per day.
+    columns:
+      - name: url_report_id
+        description: Surrogate key derived from date_day, ad_id, click_url, and source_relation.
+        tests:
+          - not_null
+          - unique
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: date_day
+        description: The date for which the performance metrics are reported.
+        tests:
+          - not_null
+      - name: ad_id
+        description: Identifier for the ad associated with this URL.
+        tests:
+          - not_null
+      - name: ad_name
+        description: Display name of the ad associated with this URL.
+      - name: advertiser_id
+        description: Identifier for the advertiser that owns the ads with this URL.
+      - name: advertiser_name
+        description: Display name of the advertiser that owns the ads with this URL.
+      - name: campaign_id
+        description: Identifier for the campaign the ads with this URL belong to.
+      - name: campaign_name
+        description: Display name of the campaign the ads with this URL belong to.
+      - name: click_url
+        description: The full destination URL for clicks on the ad.
+        tests:
+          - not_null
+      - name: base_url
+        description: The URL before the query string, extracted from click_url.
+      - name: url_host
+        description: The domain extracted from click_url.
+      - name: url_path
+        description: The path component extracted from click_url.
+      - name: utm_source
+        description: The utm_source parameter extracted from click_url.
+      - name: utm_medium
+        description: The utm_medium parameter extracted from click_url.
+      - name: utm_campaign
+        description: The utm_campaign parameter extracted from click_url.
+      - name: utm_content
+        description: The utm_content parameter extracted from click_url.
+      - name: utm_term
+        description: The utm_term parameter extracted from click_url.
+      - name: impressions
+        description: Total number of ad impressions served for this URL on the given day.
+      - name: clicks
+        description: Total number of clicks on ads with this URL on the given day.
+      - name: spend
+        description: Total spend on ads with this URL on the given day.
+      - name: conversions
+        description: Total number of conversions recorded for ads with this URL on the given day.
+
+  - name: stackadapt__ad_report
+    description: Daily ad-level performance report for StackAdapt. One row per ad per day.
+    columns:
+      - name: ad_report_id
+        description: Surrogate key derived from date_day, ad_id, and source_relation.
+        tests:
+          - not_null
+          - unique
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: date_day
+        description: The date for which the performance metrics are reported.
+        tests:
+          - not_null
+      - name: ad_id
+        description: Unique identifier for the ad.
+        tests:
+          - not_null
+      - name: ad_name
+        description: Display name of the ad.
+      - name: ad_state
+        description: Lifecycle state of the ad.
+      - name: ad_status
+        description: Delivery status of the ad.
+      - name: channel_type
+        description: The advertising channel type for this ad.
+      - name: creative_size
+        description: The creative dimensions or size of the ad.
+      - name: advertiser_id
+        description: Identifier for the advertiser that owns this ad.
+      - name: advertiser_name
+        description: Display name of the advertiser that owns this ad.
+      - name: campaign_id
+        description: Identifier for the campaign this ad belongs to.
+      - name: campaign_name
+        description: Display name of the campaign this ad belongs to.
+      - name: impressions
+        description: Total number of ad impressions served.
+      - name: clicks
+        description: Total number of clicks on ads.
+      - name: spend
+        description: Total spend on ad delivery.
+      - name: conversions
+        description: Total number of conversions recorded.

@@ -1,0 +1,238 @@
+version: 2
+
+models:
+  - name: stg_stackadapt__advertiser
+    description: Cleaned and renamed advertiser records from StackAdapt. One row per advertiser.
+    columns:
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: advertiser_id
+        description: Unique identifier for the advertiser.
+        tests:
+          - not_null
+      - name: advertiser_name
+        description: Display name of the advertiser.
+      - name: description
+        description: Description of the advertiser.
+      - name: is_archived
+        description: Whether the advertiser has been archived.
+
+  - name: stg_stackadapt__advertiser_delivery
+    description: Daily delivery metrics at the advertiser level. One row per advertiser per day.
+    columns:
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: advertiser_delivery_id
+        description: Surrogate key derived from advertiser_id and date_day.
+        tests:
+          - not_null
+          - unique
+      - name: advertiser_id
+        description: Identifier for the advertiser these delivery metrics belong to.
+      - name: date_day
+        description: The date for which the delivery metrics are reported.
+      - name: impressions
+        description: Number of ad impressions served.
+      - name: clicks
+        description: Number of clicks on ads.
+      - name: spend
+        description: Total spend on ad delivery.
+      - name: conversions
+        description: Number of conversions recorded.
+
+  - name: stg_stackadapt__campaign_group
+    description: Cleaned and renamed campaign group records from StackAdapt. One row per campaign group.
+    columns:
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: campaign_group_id
+        description: Unique identifier for the campaign group.
+        tests:
+          - not_null
+      - name: campaign_group_name
+        description: Display name of the campaign group.
+      - name: budget_rollover
+        description: Whether unspent budget rolls over to the next period.
+      - name: budget_type
+        description: The type of budget applied to this campaign group.
+      - name: domain_exclusions
+        description: Domains excluded from ad delivery for this campaign group.
+      - name: domains
+        description: Domains targeted for ad delivery for this campaign group.
+      - name: freq_cap_expiry
+        description: The time window in hours for the frequency cap.
+      - name: freq_cap_limit
+        description: The maximum number of ad impressions per user within the frequency cap window.
+      - name: is_archived
+        description: Whether the campaign group has been archived.
+      - name: is_inventory_packages_strict
+        description: Whether inventory package targeting is applied strictly.
+      - name: revenue_pricing
+        description: The revenue pricing value for this campaign group.
+      - name: revenue_type
+        description: The revenue pricing model for this campaign group.
+      - name: timezone
+        description: The timezone used for scheduling and reporting this campaign group.
+      - name: created_at
+        description: Timestamp when the campaign group was created.
+
+  - name: stg_stackadapt__campaign_group_delivery
+    description: Daily delivery metrics at the campaign group level. One row per campaign group per campaign per day.
+    columns:
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: campaign_group_delivery_id
+        description: Surrogate key derived from campaign_group_id, campaign_id, and date_day.
+        tests:
+          - not_null
+          - unique
+      - name: campaign_group_id
+        description: Identifier for the campaign group these delivery metrics belong to.
+      - name: advertiser_id
+        description: Identifier for the advertiser that owns this campaign group.
+      - name: date_day
+        description: The date for which the delivery metrics are reported.
+      - name: impressions
+        description: Number of ad impressions served.
+      - name: clicks
+        description: Number of clicks on ads.
+      - name: spend
+        description: Total spend on ad delivery.
+      - name: conversions
+        description: Number of conversions recorded.
+
+  - name: stg_stackadapt__campaign
+    description: Cleaned and renamed campaign records from StackAdapt. One row per campaign.
+    columns:
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: campaign_id
+        description: Unique identifier for the campaign.
+        tests:
+          - not_null
+      - name: advertiser_id
+        description: Identifier for the advertiser that owns this campaign.
+      - name: campaign_group_id
+        description: Identifier for the campaign group this campaign belongs to.
+      - name: campaign_name
+        description: Display name of the campaign.
+      - name: campaign_state
+        description: Lifecycle state of the campaign.
+      - name: campaign_status
+        description: Delivery status of the campaign.
+      - name: channel_type
+        description: The advertising channel type for this campaign.
+      - name: is_archived
+        description: Whether the campaign has been archived.
+      - name: created_at
+        description: Timestamp when the campaign was created.
+      - name: updated_at
+        description: Timestamp when the campaign was last updated.
+
+  - name: stg_stackadapt__campaign_delivery
+    description: Daily delivery metrics at the campaign level. One row per campaign per day.
+    columns:
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: campaign_delivery_id
+        description: Surrogate key derived from campaign_id and date_day.
+        tests:
+          - not_null
+          - unique
+      - name: campaign_id
+        description: Identifier for the campaign these delivery metrics belong to.
+      - name: advertiser_id
+        description: Identifier for the advertiser that owns this campaign.
+      - name: date_day
+        description: The date for which the delivery metrics are reported.
+      - name: impressions
+        description: Number of ad impressions served.
+      - name: clicks
+        description: Number of clicks on ads.
+      - name: spend
+        description: Total spend on ad delivery.
+      - name: conversions
+        description: Number of conversions recorded.
+
+  - name: stg_stackadapt__ad
+    description: Cleaned and renamed ad records from StackAdapt. One row per ad.
+    columns:
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: ad_id
+        description: Unique identifier for the ad.
+        tests:
+          - not_null
+      - name: advertiser_id
+        description: Identifier for the advertiser that owns this ad.
+      - name: campaign_id
+        description: Identifier for the campaign this ad belongs to.
+      - name: ad_name
+        description: Display name of the ad.
+      - name: ad_state
+        description: Lifecycle state of the ad.
+      - name: ad_status
+        description: Delivery status of the ad.
+      - name: channel_type
+        description: The advertising channel type for this ad.
+      - name: click_url
+        description: The destination URL for clicks on this ad.
+      - name: creative_size
+        description: The creative dimensions or size of the ad.
+      - name: paused
+        description: Whether the ad is currently paused.
+      - name: is_archived
+        description: Whether the ad has been archived.
+      - name: is_draft
+        description: Whether the ad is in draft state.
+      - name: is_rejected
+        description: Whether the ad has been rejected.
+      - name: base_url
+        description: The URL before the query string, extracted from click_url.
+      - name: url_host
+        description: The domain extracted from click_url.
+      - name: url_path
+        description: The path component extracted from click_url.
+      - name: utm_source
+        description: The utm_source parameter extracted from click_url.
+      - name: utm_medium
+        description: The utm_medium parameter extracted from click_url.
+      - name: utm_campaign
+        description: The utm_campaign parameter extracted from click_url.
+      - name: utm_content
+        description: The utm_content parameter extracted from click_url.
+      - name: utm_term
+        description: The utm_term parameter extracted from click_url.
+
+  - name: stg_stackadapt__ad_delivery
+    description: Daily delivery metrics at the ad level. One row per ad per day.
+    columns:
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: ad_delivery_id
+        description: Surrogate key derived from ad_id, campaign_id, and date_day.
+        tests:
+          - not_null
+          - unique
+      - name: ad_id
+        description: Identifier for the ad these delivery metrics belong to.
+      - name: campaign_id
+        description: Identifier for the campaign this ad belongs to.
+      - name: date_day
+        description: The date for which the delivery metrics are reported.
+      - name: impressions
+        description: Number of ad impressions served.
+      - name: clicks
+        description: Number of clicks on ads.
+      - name: spend
+        description: Total spend on ad delivery.
+      - name: conversions
+        description: Number of conversions recorded.

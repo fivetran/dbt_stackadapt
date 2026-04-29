@@ -1,0 +1,12 @@
+database_key: stackadapt_database
+schema_key: stackadapt_schema
+
+dbt_versions: ">=1.3.0 <3.0.0"
+
+public_models: [
+  "stackadapt__advertiser_report",
+  "stackadapt__campaign_group_report",
+  "stackadapt__campaign_report",
+  "stackadapt__ad_report",
+  "stackadapt__url_report"
+]

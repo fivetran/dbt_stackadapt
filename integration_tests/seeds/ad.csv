@@ -1,0 +1,27 @@
+_fivetran_deleted,advertiser_id,campaign_id,channel_type,click_url,creative_size,id,is_archived,is_draft,is_rejected,name,paused,state,status
+false,1001,3001,native,//smile.fictional-dental.invalid/new-year,300x250,4001,false,false,false,New Year Smile Banner A,false,approved,active
+false,1001,3001,native,//smile.fictional-dental.invalid/new-year,728x90,4002,false,false,false,New Year Smile Banner B,false,approved,active
+false,1001,3001,native,//smile.fictional-dental.invalid/new-year,160x600,4003,false,false,false,New Year Smile Sidebar,false,approved,active
+false,1001,3001,native,//smile.fictional-dental.invalid/new-year,970x250,4004,false,false,false,New Year Smile Leaderboard,false,approved,active
+false,1001,3002,display,//smile.fictional-dental.invalid/spring-checkup,300x250,4005,false,false,false,Spring Clean Teeth Ad,false,approved,active
+false,1001,3002,display,//smile.fictional-dental.invalid/spring-checkup,728x90,4006,false,false,false,Spring Family Checkup,false,approved,active
+false,1001,3002,display,//smile.fictional-dental.invalid/spring-special,300x600,4007,false,false,false,Spring Dental Special,false,approved,active
+false,1001,3003,native,//smile.fictional-dental.invalid/office-open,300x250,4008,false,false,false,office Opening Day,false,approved,active
+false,1001,3003,native,//smile.fictional-dental.invalid/office-consult,728x90,4009,false,false,false,office Free Consult,false,approved,active
+false,1001,3003,native,//smile.fictional-dental.invalid/office-grand,300x600,4010,false,false,false,office Grand Open,false,approved,active
+false,1001,3004,video,//smile.fictional-dental.invalid/office-video,640x480,4011,false,false,false,office Welcome Video,false,approved,active
+false,1001,3004,video,//smile.fictional-dental.invalid/office-tour,1920x1080,4012,false,false,false,office Tour Spot,false,approved,active
+false,1001,3004,video,//smile.fictional-dental.invalid/office-intro,640x360,4013,false,false,false,office Dentist Intro,false,approved,active
+false,1002,3005,native,//shop.fictional-dental.invalid/whitening-kit,300x250,4014,false,false,false,Whitening Kit Hero,false,approved,active
+false,1002,3005,native,//shop.fictional-dental.invalid/whitening-results,728x90,4015,false,false,false,Whitening Before After,false,approved,active
+false,1002,3005,native,//shop.fictional-dental.invalid/whitening-kit,300x300,4016,false,false,false,Whitening Kit Square,false,approved,active
+false,1002,3005,native,//shop.fictional-dental.invalid/whitening-kit,970x250,4017,false,false,false,Whitening Kit Wide,false,approved,active
+false,1002,3006,display,//shop.fictional-dental.invalid/toothbrush-bundle,300x250,4018,false,false,false,Toothbrush Bundle Deal,true,approved,paused
+false,1002,3006,display,//shop.fictional-dental.invalid/toothbrush-compare,160x600,4019,false,false,false,Toothbrush Comparison,true,approved,paused
+false,1002,3007,native,//shop.fictional-dental.invalid/holiday-whitening,300x250,4020,false,false,false,Holiday Whitening Gift,false,approved,active
+false,1002,3007,native,//shop.fictional-dental.invalid/holiday-bundle,728x90,4021,false,false,false,Holiday Bundle Banner,false,approved,active
+false,1002,3007,native,//shop.fictional-dental.invalid/holiday-flash,300x600,4022,false,false,false,Holiday Flash Sale,false,approved,active
+false,1002,3007,native,//shop.fictional-dental.invalid/holiday-whitening,970x250,4023,false,false,false,Holiday Whitening Wide,false,approved,active
+false,1002,3008,display,//shop.fictional-dental.invalid/gift-set,300x250,4024,false,false,false,Gift Set Retarget A,false,approved,active
+false,1002,3008,display,//shop.fictional-dental.invalid/gift-set,160x600,4025,false,false,false,Gift Set Retarget B,false,approved,active
+false,1002,3008,display,//shop.fictional-dental.invalid/gift-set,728x90,4026,false,false,false,Gift Set Retarget C,false,approved,active
