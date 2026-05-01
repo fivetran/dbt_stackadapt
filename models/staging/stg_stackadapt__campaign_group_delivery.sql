@@ -23,7 +23,7 @@ final as (
 
     select
         source_relation,
-        {{ dbt_utils.generate_surrogate_key(['campaign_group_id', 'granularity_time']) }} as campaign_group_delivery_id,
+        {{ dbt_utils.generate_surrogate_key(['source_relation', 'campaign_group_id', 'granularity_time']) }} as campaign_group_delivery_key,
         cast(campaign_group_id as {{ dbt.type_string() }}) as campaign_group_id,
         cast(advertiser_id as {{ dbt.type_string() }}) as advertiser_id,
         cast(granularity_time as date) as date_day,

@@ -15,7 +15,7 @@ advertiser as (
 final as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['advertiser_delivery.date_day', 'advertiser_delivery.advertiser_id', 'advertiser_delivery.source_relation']) }} as advertiser_report_id,
+        {{ dbt_utils.generate_surrogate_key(['advertiser_delivery.date_day', 'advertiser_delivery.advertiser_id', 'advertiser_delivery.source_relation']) }} as advertiser_report_key,
         advertiser_delivery.source_relation,
         advertiser_delivery.date_day,
         advertiser_delivery.advertiser_id,

@@ -29,14 +29,14 @@ campaign as (
 final as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['ad_delivery.date_day', 'ad_delivery.ad_id', 'ads.click_url', 'ad_delivery.source_relation']) }} as url_report_id,
+        {{ dbt_utils.generate_surrogate_key(['ad_delivery.date_day', 'ad_delivery.ad_id', 'ads.click_url', 'ad_delivery.source_relation']) }} as url_report_key,
         ad_delivery.source_relation,
         ad_delivery.date_day,
         ad_delivery.ad_id,
         ads.ad_name,
         ads.advertiser_id,
         advertiser.advertiser_name,
-        ads.campaign_id,
+        ad_delivery.campaign_id,
         campaign.campaign_name,
         ads.click_url,
         ads.base_url,
@@ -60,8 +60,8 @@ final as (
         on ads.advertiser_id = advertiser.advertiser_id
         and ads.source_relation = advertiser.source_relation
     left join campaign
-        on ads.campaign_id = campaign.campaign_id
-        and ads.source_relation = campaign.source_relation
+        on ad_delivery.campaign_id = campaign.campaign_id
+        and ad_delivery.source_relation = campaign.source_relation
     where ads.click_url is not null
     {{ dbt_utils.group_by(n=18) }}
 

@@ -23,6 +23,7 @@ final as (
 
     select
         source_relation,
+        {{ dbt_utils.generate_surrogate_key(['source_relation', 'id']) }} as ad_key,
         cast(id as {{ dbt.type_string() }}) as ad_id,
         cast(advertiser_id as {{ dbt.type_string() }}) as advertiser_id,
         cast(campaign_id as {{ dbt.type_string() }}) as campaign_id,
@@ -32,7 +33,7 @@ final as (
         channel_type,
         click_url,
         creative_size,
-        paused,
+        paused as is_paused,
         is_archived,
         is_draft,
         is_rejected

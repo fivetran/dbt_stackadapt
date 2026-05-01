@@ -24,4 +24,8 @@ dbt run --target "$db" --full-refresh
 dbt run --target "$db"
 dbt test --target "$db"
 
+# Passthrough metrics test: exercises alias renaming and multi-column passthrough across all delivery models
+dbt run --target "$db" --full-refresh --vars '{stackadapt__ad_delivery_passthrough_metrics: [{name: revenue, alias: ad_revenue}, {name: impression_conversions_bigint}], stackadapt__advertiser_delivery_passthrough_metrics: [{name: revenue, alias: advertiser_revenue}], stackadapt__campaign_delivery_passthrough_metrics: [{name: revenue}, {name: impression_conversions_bigint, alias: campaign_view_through_conversions}], stackadapt__campaign_group_delivery_passthrough_metrics: [{name: impression_conversions_bigint, alias: view_through_conversions}]}'
+dbt test --target "$db" --vars '{stackadapt__ad_delivery_passthrough_metrics: [{name: revenue, alias: ad_revenue}, {name: impression_conversions_bigint}], stackadapt__advertiser_delivery_passthrough_metrics: [{name: revenue, alias: advertiser_revenue}], stackadapt__campaign_delivery_passthrough_metrics: [{name: revenue}, {name: impression_conversions_bigint, alias: campaign_view_through_conversions}], stackadapt__campaign_group_delivery_passthrough_metrics: [{name: impression_conversions_bigint, alias: view_through_conversions}]}'
+
 dbt run-operation fivetran_utils.drop_schemas_automation --target "$db"

@@ -3,13 +3,15 @@
     enabled=var('fivetran_validation_tests_enabled', false)
 ) }}
 
+{% set exclude_columns = [] + var('consistency_test_exclude_fields', []) %}
+
 with prod as (
-    select *
+    select {{ dbt_utils.star(from=ref('stackadapt__campaign_group_report'), except=exclude_columns) }}
     from {{ target.schema }}_stackadapt_prod.stackadapt__campaign_group_report
 ),
 
 dev as (
-    select *
+    select {{ dbt_utils.star(from=ref('stackadapt__campaign_group_report'), except=exclude_columns) }}
     from {{ target.schema }}_stackadapt_dev.stackadapt__campaign_group_report
 ),
 

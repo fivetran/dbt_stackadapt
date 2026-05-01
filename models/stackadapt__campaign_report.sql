@@ -29,7 +29,7 @@ campaign_group as (
 final as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['campaign_delivery.date_day', 'campaign_delivery.campaign_id', 'campaign_delivery.source_relation']) }} as campaign_report_id,
+        {{ dbt_utils.generate_surrogate_key(['campaign_delivery.date_day', 'campaign_delivery.campaign_id', 'campaign_delivery.source_relation']) }} as campaign_report_key,
         campaign_delivery.source_relation,
         campaign_delivery.date_day,
         campaign_delivery.campaign_id,

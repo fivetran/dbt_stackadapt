@@ -22,7 +22,7 @@ advertiser as (
 final as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['campaign_group_delivery.date_day', 'campaign_group_delivery.campaign_group_id', 'campaign_group_delivery.source_relation']) }} as campaign_group_report_id,
+        {{ dbt_utils.generate_surrogate_key(['campaign_group_delivery.date_day', 'campaign_group_delivery.campaign_group_id', 'campaign_group_delivery.source_relation']) }} as campaign_group_report_key,
         campaign_group_delivery.source_relation,
         campaign_group_delivery.date_day,
         campaign_group_delivery.campaign_group_id,

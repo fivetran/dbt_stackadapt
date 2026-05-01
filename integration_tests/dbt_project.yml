@@ -38,6 +38,7 @@ seeds:
         granularity_time: timestamp
         impressions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         revenue: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+        impression_conversions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     campaign_group:
       +column_types:
         created_at: timestamp
@@ -55,6 +56,7 @@ seeds:
         granularity_time: timestamp
         impressions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         revenue: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+        impression_conversions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     campaign:
       +column_types:
         advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
@@ -72,6 +74,7 @@ seeds:
         granularity_time: timestamp
         impressions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         revenue: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+        impression_conversions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     ad:
       +column_types:
         advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
@@ -87,6 +90,7 @@ seeds:
         granularity_time: timestamp
         impressions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         revenue: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+        impression_conversions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
 
 flags:
   send_anonymous_usage_stats: False

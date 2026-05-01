@@ -29,7 +29,7 @@ campaign as (
 final as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['ad_delivery.date_day', 'ad_delivery.ad_id', 'ad_delivery.source_relation']) }} as ad_report_id,
+        {{ dbt_utils.generate_surrogate_key(['ad_delivery.date_day', 'ad_delivery.ad_id', 'ad_delivery.source_relation']) }} as ad_report_key,
         ad_delivery.source_relation,
         ad_delivery.date_day,
         ad_delivery.ad_id,
@@ -40,7 +40,7 @@ final as (
         ad.creative_size,
         ad.advertiser_id,
         advertiser.advertiser_name,
-        ad.campaign_id,
+        ad_delivery.campaign_id,
         campaign.campaign_name,
         sum(ad_delivery.impressions) as impressions,
         sum(ad_delivery.clicks) as clicks,
@@ -55,8 +55,8 @@ final as (
         on ad.advertiser_id = advertiser.advertiser_id
         and ad.source_relation = advertiser.source_relation
     left join campaign
-        on ad.campaign_id = campaign.campaign_id
-        and ad.source_relation = campaign.source_relation
+        on ad_delivery.campaign_id = campaign.campaign_id
+        and ad_delivery.source_relation = campaign.source_relation
     {{ dbt_utils.group_by(n=13) }}
 
 )

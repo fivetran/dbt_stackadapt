@@ -23,6 +23,7 @@ final as (
 
     select
         source_relation,
+        {{ dbt_utils.generate_surrogate_key(['source_relation', 'id']) }} as campaign_key,
         cast(id as {{ dbt.type_string() }}) as campaign_id,
         cast(advertiser_id as {{ dbt.type_string() }}) as advertiser_id,
         cast(campaign_group_id as {{ dbt.type_string() }}) as campaign_group_id,

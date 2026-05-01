@@ -6,13 +6,13 @@
 {% set exclude_columns = [] + var('consistency_test_exclude_fields', []) %}
 
 with prod as (
-    select {{ dbt_utils.star(from=ref('stackadapt__ad_report'), except=exclude_columns) }}
-    from {{ target.schema }}_stackadapt_prod.stackadapt__ad_report
+    select {{ dbt_utils.star(from=ref('stackadapt__url_report'), except=exclude_columns) }}
+    from {{ target.schema }}_stackadapt_prod.stackadapt__url_report
 ),
 
 dev as (
-    select {{ dbt_utils.star(from=ref('stackadapt__ad_report'), except=exclude_columns) }}
-    from {{ target.schema }}_stackadapt_dev.stackadapt__ad_report
+    select {{ dbt_utils.star(from=ref('stackadapt__url_report'), except=exclude_columns) }}
+    from {{ target.schema }}_stackadapt_dev.stackadapt__url_report
 ),
 
 prod_not_in_dev as (
