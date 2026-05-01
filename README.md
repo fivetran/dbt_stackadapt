@@ -1,5 +1,5 @@
 <!--section="stackadapt_transformation_model"-->
-# StackAdapt dbt Package
+# # StackAdapt dbt Package (WORK IN PROGRESS)
 
 This dbt package transforms data from Fivetran's StackAdapt connector into analytics-ready tables.
 
