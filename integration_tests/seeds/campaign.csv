@@ -1,0 +1,9 @@
+_fivetran_deleted,advertiser_id,campaign_group_id,channel_type,created_at,id,is_archived,name,state,status,updated_at
+false,1001,2001,native,2025-01-06T09:30:00,3001,false,Campaign A,enabled,delivering,2025-06-20T16:00:00
+false,1001,2001,display,2025-02-20T10:00:00,3002,false,Campaign B,enabled,delivering,2025-06-20T16:00:00
+false,1001,2002,native,2025-07-20T11:00:00,3003,false,Campaign C,enabled,delivering,2025-10-20T15:00:00
+false,1001,2002,video,2025-08-25T09:00:00,3004,false,Campaign D,enabled,delivering,2025-12-20T17:00:00
+false,1002,2003,native,2025-05-25T10:00:00,3005,false,Campaign E,enabled,delivering,2025-09-20T16:00:00
+false,1002,2003,display,2025-05-28T11:00:00,3006,false,Campaign F,paused,paused,2025-08-05T14:00:00
+false,1002,2004,native,2025-09-28T09:00:00,3007,false,Campaign G,enabled,delivering,2025-12-20T18:00:00
+false,1002,2004,display,2025-10-15T10:00:00,3008,false,Campaign H,enabled,delivering,2025-12-20T18:00:00

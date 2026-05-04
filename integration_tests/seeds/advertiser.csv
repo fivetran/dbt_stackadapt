@@ -1,0 +1,3 @@
+_fivetran_deleted,description,id,is_archived,name
+false,Company A,1001,false,Fictional Company A
+false,Company B,1002,false,Fictional Company B

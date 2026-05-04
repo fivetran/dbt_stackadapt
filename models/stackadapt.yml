@@ -1,0 +1,265 @@
+version: 2
+
+models:
+  - name: stackadapt__advertiser_report
+    description: Daily advertiser-level performance report for StackAdapt. One row per advertiser per day.
+    columns:
+      - name: advertiser_report_key
+        description: Surrogate key derived from date_day, advertiser_id, and source_relation.
+        tests:
+          - not_null
+          - unique
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: date_day
+        description: >
+          {{ doc("date_day") }}
+        tests:
+          - not_null
+      - name: advertiser_id
+        description: >
+          {{ doc("advertiser_id") }}
+        tests:
+          - not_null
+      - name: advertiser_name
+        description: >
+          {{ doc("advertiser_name") }}
+      - name: is_archived
+        description: >
+          {{ doc("is_archived") }}
+      - name: impressions
+        description: Total number of ad impressions served.
+      - name: clicks
+        description: Total number of ad clicks.
+      - name: spend
+        description: Total advertising spend.
+      - name: conversions
+        description: Total number of conversions recorded.
+
+  - name: stackadapt__campaign_group_report
+    description: Daily campaign group-level performance report for StackAdapt. One row per campaign group per day. Aggregated from campaign group-level delivery data within each campaign group.
+    columns:
+      - name: campaign_group_report_key
+        description: Surrogate key derived from date_day, campaign_group_id, and source_relation.
+        tests:
+          - not_null
+          - unique
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: date_day
+        description: >
+          {{ doc("date_day") }}
+        tests:
+          - not_null
+      - name: campaign_group_id
+        description: >
+          {{ doc("campaign_group_id") }}
+        tests:
+          - not_null
+      - name: campaign_group_name
+        description: >
+          {{ doc("campaign_group_name") }}
+      - name: is_archived
+        description: >
+          {{ doc("is_archived") }}
+      - name: advertiser_id
+        description: >
+          {{ doc("advertiser_id") }}
+      - name: advertiser_name
+        description: >
+          {{ doc("advertiser_name") }}
+      - name: impressions
+        description: Total number of ad impressions served across all campaigns in the campaign group.
+      - name: clicks
+        description: Total number of ad clicks across all campaigns in the campaign group.
+      - name: spend
+        description: Total advertising spend across all campaigns in the campaign group.
+      - name: conversions
+        description: Total number of conversions recorded across all campaigns in the campaign group.
+
+  - name: stackadapt__campaign_report
+    description: Daily campaign-level performance report for StackAdapt. One row per campaign per day.
+    columns:
+      - name: campaign_report_key
+        description: Surrogate key derived from date_day, campaign_id, and source_relation.
+        tests:
+          - not_null
+          - unique
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: date_day
+        description: >
+          {{ doc("date_day") }}
+        tests:
+          - not_null
+      - name: campaign_id
+        description: >
+          {{ doc("campaign_id") }}
+        tests:
+          - not_null
+      - name: campaign_name
+        description: >
+          {{ doc("campaign_name") }}
+      - name: campaign_state
+        description: >
+          {{ doc("campaign_state") }}
+      - name: campaign_status
+        description: >
+          {{ doc("campaign_status") }}
+      - name: channel_type
+        description: >
+          {{ doc("channel_type") }}
+      - name: advertiser_id
+        description: >
+          {{ doc("advertiser_id") }}
+      - name: advertiser_name
+        description: >
+          {{ doc("advertiser_name") }}
+      - name: campaign_group_id
+        description: >
+          {{ doc("campaign_group_id") }}
+      - name: campaign_group_name
+        description: >
+          {{ doc("campaign_group_name") }}
+      - name: impressions
+        description: Total number of ad impressions served.
+      - name: clicks
+        description: Total number of ad clicks.
+      - name: spend
+        description: Total advertising spend.
+      - name: conversions
+        description: Total number of conversions recorded.
+
+  - name: stackadapt__url_report
+    description: Daily URL-level performance report for StackAdapt. One row per click URL per day.
+    columns:
+      - name: url_report_key
+        description: Surrogate key derived from date_day, ad_id, click_url, and source_relation.
+        tests:
+          - not_null
+          - unique
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: date_day
+        description: >
+          {{ doc("date_day") }}
+        tests:
+          - not_null
+      - name: ad_id
+        description: >
+          {{ doc("ad_id") }}
+        tests:
+          - not_null
+      - name: ad_name
+        description: >
+          {{ doc("ad_name") }}
+      - name: advertiser_id
+        description: >
+          {{ doc("advertiser_id") }}
+      - name: advertiser_name
+        description: >
+          {{ doc("advertiser_name") }}
+      - name: campaign_id
+        description: >
+          {{ doc("campaign_id") }}
+      - name: campaign_name
+        description: >
+          {{ doc("campaign_name") }}
+      - name: click_url
+        description: >
+          {{ doc("click_url") }}
+        tests:
+          - not_null
+      - name: base_url
+        description: >
+          {{ doc("base_url") }}
+      - name: url_host
+        description: >
+          {{ doc("url_host") }}
+      - name: url_path
+        description: >
+          {{ doc("url_path") }}
+      - name: utm_source
+        description: >
+          {{ doc("utm_source") }}
+      - name: utm_medium
+        description: >
+          {{ doc("utm_medium") }}
+      - name: utm_campaign
+        description: >
+          {{ doc("utm_campaign") }}
+      - name: utm_content
+        description: >
+          {{ doc("utm_content") }}
+      - name: utm_term
+        description: >
+          {{ doc("utm_term") }}
+      - name: impressions
+        description: Total number of ad impressions served for this URL on the given day.
+      - name: clicks
+        description: Total number of ad clicks for this URL on the given day.
+      - name: spend
+        description: Total advertising spend for this URL on the given day.
+      - name: conversions
+        description: Total number of conversions recorded for this URL on the given day.
+
+  - name: stackadapt__ad_report
+    description: Daily ad-level performance report for StackAdapt. One row per ad per day.
+    columns:
+      - name: ad_report_key
+        description: Surrogate key derived from date_day, ad_id, and source_relation.
+        tests:
+          - not_null
+          - unique
+      - name: source_relation
+        description: >
+          {{ doc("source_relation") }}
+      - name: date_day
+        description: >
+          {{ doc("date_day") }}
+        tests:
+          - not_null
+      - name: ad_id
+        description: >
+          {{ doc("ad_id") }}
+        tests:
+          - not_null
+      - name: ad_name
+        description: >
+          {{ doc("ad_name") }}
+      - name: ad_state
+        description: >
+          {{ doc("ad_state") }}
+      - name: ad_status
+        description: >
+          {{ doc("ad_status") }}
+      - name: channel_type
+        description: >
+          {{ doc("channel_type") }}
+      - name: creative_size
+        description: >
+          {{ doc("creative_size") }}
+      - name: advertiser_id
+        description: >
+          {{ doc("advertiser_id") }}
+      - name: advertiser_name
+        description: >
+          {{ doc("advertiser_name") }}
+      - name: campaign_id
+        description: >
+          {{ doc("campaign_id") }}
+      - name: campaign_name
+        description: >
+          {{ doc("campaign_name") }}
+      - name: impressions
+        description: Total number of ad impressions served.
+      - name: clicks
+        description: Total number of ad clicks.
+      - name: spend
+        description: Total advertising spend.
+      - name: conversions
+        description: Total number of conversions recorded.

@@ -1,0 +1,97 @@
+name: 'stackadapt_integration_tests'
+version: '0.1.0'
+config-version: 2
+profile: 'integration_tests'
+
+vars:
+  stackadapt:
+    stackadapt_schema: stackadapt_integration_tests
+    stackadapt_ad_identifier: "ad"
+    stackadapt_ad_delivery_identifier: "ad_delivery"
+    stackadapt_advertiser_identifier: "advertiser"
+    stackadapt_advertiser_delivery_identifier: "advertiser_delivery"
+    stackadapt_campaign_identifier: "campaign"
+    stackadapt_campaign_delivery_identifier: "campaign_delivery"
+    stackadapt_campaign_group_identifier: "campaign_group"
+    stackadapt_campaign_group_delivery_identifier: "campaign_group_delivery"
+
+models:
+  +persist_docs:
+    relation: true
+    columns: "{{ false if target.type in ('databricks') else true }}"
+  stackadapt:
+    +schema: "stackadapt_{{ var('directed_schema','dev') }}"
+
+seeds:
+  +docs:
+    show: False
+  stackadapt_integration_tests:
+    advertiser:
+      +column_types:
+        id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    advertiser_delivery:
+      +column_types:
+        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        clicks_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        conversions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        cost: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+        granularity_time: timestamp
+        impressions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        revenue: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+        impression_conversions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    campaign_group:
+      +column_types:
+        created_at: timestamp
+        freq_cap_expiry: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        freq_cap_limit: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        revenue_pricing: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+    campaign_group_delivery:
+      +column_types:
+        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        clicks_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        conversions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        cost: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+        granularity_time: timestamp
+        impressions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        revenue: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+        impression_conversions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    campaign:
+      +column_types:
+        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        created_at: timestamp
+        id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        updated_at: timestamp
+    campaign_delivery:
+      +column_types:
+        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        clicks_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        conversions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        cost: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+        granularity_time: timestamp
+        impressions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        revenue: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+        impression_conversions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    ad:
+      +column_types:
+        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    ad_delivery:
+      +column_types:
+        ad_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        clicks_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        conversions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        cost: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+        granularity_time: timestamp
+        impressions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        revenue: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+        impression_conversions_bigint: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+
+flags:
+  send_anonymous_usage_stats: False
+  use_colors: True

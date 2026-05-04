@@ -1,0 +1,27 @@
+_fivetran_deleted,advertiser_id,campaign_id,channel_type,click_url,creative_size,id,is_archived,is_draft,is_rejected,name,paused,state,status
+false,1001,3001,native,//ads.fictional-company.invalid/landing,300x250,4001,false,false,false,Ad A,false,approved,active
+false,1001,3001,native,//ads.fictional-company.invalid/landing,728x90,4002,false,false,false,Ad B,false,approved,active
+false,1001,3001,native,//ads.fictional-company.invalid/landing,160x600,4003,false,false,false,Ad C,false,approved,active
+false,1001,3001,native,//ads.fictional-company.invalid/landing,970x250,4004,false,false,false,Ad D,false,approved,active
+false,1001,3002,display,//ads.fictional-company.invalid/landing,300x250,4005,false,false,false,Ad E,false,approved,active
+false,1001,3002,display,//ads.fictional-company.invalid/landing,728x90,4006,false,false,false,Ad F,false,approved,active
+false,1001,3002,display,//ads.fictional-company.invalid/landing,300x600,4007,false,false,false,Ad G,false,approved,active
+false,1001,3003,native,//ads.fictional-company.invalid/landing,300x250,4008,false,false,false,Ad H,false,approved,active
+false,1001,3003,native,//ads.fictional-company.invalid/landing,728x90,4009,false,false,false,Ad I,false,approved,active
+false,1001,3003,native,//ads.fictional-company.invalid/landing,300x600,4010,false,false,false,Ad J,false,approved,active
+false,1001,3004,video,//ads.fictional-company.invalid/landing,640x480,4011,false,false,false,Ad K,false,approved,active
+false,1001,3004,video,//ads.fictional-company.invalid/landing,1920x1080,4012,false,false,false,Ad L,false,approved,active
+false,1001,3004,video,//ads.fictional-company.invalid/landing,640x360,4013,false,false,false,Ad M,false,approved,active
+false,1002,3005,native,//ads.fictional-company.invalid/landing,300x250,4014,false,false,false,Ad N,false,approved,active
+false,1002,3005,native,//ads.fictional-company.invalid/landing,728x90,4015,false,false,false,Ad O,false,approved,active
+false,1002,3005,native,//ads.fictional-company.invalid/landing,300x300,4016,false,false,false,Ad P,false,approved,active
+false,1002,3005,native,//ads.fictional-company.invalid/landing,970x250,4017,false,false,false,Ad Q,false,approved,active
+false,1002,3006,display,//ads.fictional-company.invalid/landing,300x250,4018,false,false,false,Ad R,true,approved,paused
+false,1002,3006,display,//ads.fictional-company.invalid/landing,160x600,4019,false,false,false,Ad S,true,approved,paused
+false,1002,3007,native,//ads.fictional-company.invalid/landing,300x250,4020,false,false,false,Ad T,false,approved,active
+false,1002,3007,native,//ads.fictional-company.invalid/landing,728x90,4021,false,false,false,Ad U,false,approved,active
+false,1002,3007,native,//ads.fictional-company.invalid/landing,300x600,4022,false,false,false,Ad V,false,approved,active
+false,1002,3007,native,//ads.fictional-company.invalid/landing,970x250,4023,false,false,false,Ad W,false,approved,active
+false,1002,3008,display,//ads.fictional-company.invalid/landing,300x250,4024,false,false,false,Ad X,false,approved,active
+false,1002,3008,display,//ads.fictional-company.invalid/landing,160x600,4025,false,false,false,Ad Y,false,approved,active
+false,1002,3008,display,//ads.fictional-company.invalid/landing,728x90,4026,false,false,false,Ad Z,false,approved,active

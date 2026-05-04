@@ -1,0 +1,5 @@
+_fivetran_deleted,budget_rollover,budget_type,created_at,domain_exclusions,domains,freq_cap_expiry,freq_cap_limit,id,is_archived,is_inventory_packages_strict,name,revenue_pricing,revenue_type,timezone
+false,false,daily,2025-01-06T09:00:00,,,86400,5,2001,false,false,Campaign Group A,2.5,CPC,America/Chicago
+false,true,daily,2025-07-15T10:00:00,,,43200,3,2002,false,false,Campaign Group B,3.0,CPC,America/Chicago
+false,false,total,2025-05-20T11:00:00,,,86400,4,2003,false,false,Campaign Group C,15.0,CPA,America/Chicago
+false,true,daily,2025-09-25T14:00:00,,,86400,6,2004,false,false,Campaign Group D,12.0,CPA,America/Chicago

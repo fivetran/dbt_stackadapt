@@ -1,0 +1,217 @@
+version: 2
+
+sources:
+  - name: stackadapt
+    schema: "{{ var('stackadapt_schema', 'stackadapt') }}"
+    database: "{% if target.type != 'spark' %}{{ var('stackadapt_database', target.database) }}{% endif %}"
+
+    tables:
+      - name: advertiser
+        identifier: "{{ var('stackadapt_advertiser_identifier', 'advertiser') }}"
+        description: Advertiser accounts in StackAdapt. One row per advertiser.
+        columns:
+          - name: id
+            description: >
+              {{ doc("advertiser_id") }}
+          - name: name
+            description: >
+              {{ doc("advertiser_name") }}
+          - name: description
+            description: Description of the advertiser.
+          - name: is_archived
+            description: >
+              {{ doc("is_archived") }}
+
+      - name: advertiser_delivery
+        identifier: "{{ var('stackadapt_advertiser_delivery_identifier', 'advertiser_delivery') }}"
+        description: Daily delivery metrics aggregated at the advertiser level. One row per advertiser per day.
+        columns:
+          - name: advertiser_id
+            description: >
+              {{ doc("advertiser_id") }}
+          - name: granularity_time
+            description: >
+              {{ doc("granularity_time") }}
+          - name: impressions_bigint
+            description: >
+              {{ doc("impressions") }}
+          - name: clicks_bigint
+            description: >
+              {{ doc("clicks") }}
+          - name: cost
+            description: >
+              {{ doc("spend") }}
+          - name: conversions_bigint
+            description: >
+              {{ doc("conversions") }}
+
+      - name: campaign_group
+        identifier: "{{ var('stackadapt_campaign_group_identifier', 'campaign_group') }}"
+        description: Campaign groups in StackAdapt. One row per campaign group.
+        columns:
+          - name: id
+            description: >
+              {{ doc("campaign_group_id") }}
+          - name: name
+            description: >
+              {{ doc("campaign_group_name") }}
+          - name: is_archived
+            description: >
+              {{ doc("is_archived") }}
+          - name: created_at
+            description: >
+              {{ doc("created_at") }}
+
+      - name: campaign_group_delivery
+        identifier: "{{ var('stackadapt_campaign_group_delivery_identifier', 'campaign_group_delivery') }}"
+        description: Daily delivery metrics at the campaign group level. One row per campaign group per campaign per day.
+        columns:
+          - name: campaign_group_id
+            description: >
+              {{ doc("campaign_group_id") }}
+          - name: advertiser_id
+            description: >
+              {{ doc("advertiser_id") }}
+          - name: granularity_time
+            description: >
+              {{ doc("granularity_time") }}
+          - name: impressions_bigint
+            description: >
+              {{ doc("impressions") }}
+          - name: clicks_bigint
+            description: >
+              {{ doc("clicks") }}
+          - name: cost
+            description: >
+              {{ doc("spend") }}
+          - name: conversions_bigint
+            description: >
+              {{ doc("conversions") }}
+
+      - name: campaign
+        identifier: "{{ var('stackadapt_campaign_identifier', 'campaign') }}"
+        description: Campaigns in StackAdapt. One row per campaign.
+        columns:
+          - name: id
+            description: >
+              {{ doc("campaign_id") }}
+          - name: advertiser_id
+            description: >
+              {{ doc("advertiser_id") }}
+          - name: campaign_group_id
+            description: >
+              {{ doc("campaign_group_id") }}
+          - name: name
+            description: >
+              {{ doc("campaign_name") }}
+          - name: state
+            description: >
+              {{ doc("campaign_state") }}
+          - name: status
+            description: >
+              {{ doc("campaign_status") }}
+          - name: channel_type
+            description: >
+              {{ doc("channel_type") }}
+          - name: is_archived
+            description: >
+              {{ doc("is_archived") }}
+          - name: created_at
+            description: >
+              {{ doc("created_at") }}
+          - name: updated_at
+            description: >
+              {{ doc("updated_at") }}
+
+      - name: campaign_delivery
+        identifier: "{{ var('stackadapt_campaign_delivery_identifier', 'campaign_delivery') }}"
+        description: Daily delivery metrics at the campaign level. One row per campaign per day.
+        columns:
+          - name: campaign_id
+            description: >
+              {{ doc("campaign_id") }}
+          - name: advertiser_id
+            description: >
+              {{ doc("advertiser_id") }}
+          - name: granularity_time
+            description: >
+              {{ doc("granularity_time") }}
+          - name: impressions_bigint
+            description: >
+              {{ doc("impressions") }}
+          - name: clicks_bigint
+            description: >
+              {{ doc("clicks") }}
+          - name: cost
+            description: >
+              {{ doc("spend") }}
+          - name: conversions_bigint
+            description: >
+              {{ doc("conversions") }}
+
+      - name: ad
+        identifier: "{{ var('stackadapt_ad_identifier', 'ad') }}"
+        description: Ads in StackAdapt. One row per ad.
+        columns:
+          - name: id
+            description: >
+              {{ doc("ad_id") }}
+          - name: advertiser_id
+            description: >
+              {{ doc("advertiser_id") }}
+          - name: campaign_id
+            description: >
+              {{ doc("campaign_id") }}
+          - name: name
+            description: >
+              {{ doc("ad_name") }}
+          - name: state
+            description: >
+              {{ doc("ad_state") }}
+          - name: status
+            description: >
+              {{ doc("ad_status") }}
+          - name: channel_type
+            description: >
+              {{ doc("channel_type") }}
+          - name: creative_size
+            description: >
+              {{ doc("creative_size") }}
+          - name: paused
+            description: >
+              {{ doc("paused") }}
+          - name: is_archived
+            description: >
+              {{ doc("is_archived") }}
+          - name: is_draft
+            description: >
+              {{ doc("is_draft") }}
+          - name: is_rejected
+            description: >
+              {{ doc("is_rejected") }}
+
+      - name: ad_delivery
+        identifier: "{{ var('stackadapt_ad_delivery_identifier', 'ad_delivery') }}"
+        description: Daily delivery metrics at the ad level. One row per ad per day.
+        columns:
+          - name: ad_id
+            description: >
+              {{ doc("ad_id") }}
+          - name: campaign_id
+            description: >
+              {{ doc("campaign_id") }}
+          - name: granularity_time
+            description: >
+              {{ doc("granularity_time") }}
+          - name: impressions_bigint
+            description: >
+              {{ doc("impressions") }}
+          - name: clicks_bigint
+            description: >
+              {{ doc("clicks") }}
+          - name: cost
+            description: >
+              {{ doc("spend") }}
+          - name: conversions_bigint
+            description: >
+              {{ doc("conversions") }}
