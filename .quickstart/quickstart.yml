@@ -10,3 +10,25 @@ public_models: [
   "stackadapt__ad_report",
   "stackadapt__url_report"
 ]
+
+supported_vars:
+  stackadapt__advertiser_delivery_passthrough_metrics:
+    type: dictionary
+    description: "Additional `ADVERTISER_DELIVERY` columns to include in `stackadapt__advertiser_report`"
+    display_name: "Additional Advertiser Report Metrics"
+
+  stackadapt__campaign_group_delivery_passthrough_metrics:
+    type: dictionary
+    description: "Additional `CAMPAIGN_GROUP_DELIVERY` columns to include in `stackadapt__campaign_group_report`"
+    display_name: "Additional Campaign Group Report Metrics"
+
+  stackadapt__campaign_delivery_passthrough_metrics:
+    type: dictionary
+    description: "Additional `CAMPAIGN_DELIVERY` columns to include in `stackadapt__campaign_report`"
+    display_name: "Additional Campaign Report Metrics"
+
+  stackadapt__ad_delivery_passthrough_metrics:
+    type: dictionary
+    description: "Additional `AD_DELIVERY` columns to include in `stackadapt__url_report` and `stackadapt__ad_report`"
+    display_name: "Additional Ad Report Metrics"
+    
