@@ -46,7 +46,7 @@ By default, this package materializes the following final tables:
 ## Prerequisites
 To use this dbt package, you must have the following:
 
-- At least one Fivetran StackAdapt connection syncing data into your destination.
+- At least one Fivetran StackAdapt connection created on or after January 15, 2026 using the StackAdapt GraphQL API syncing data into your destination.
 - A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, or **Databricks** destination.
 
 ## How do I use the dbt package?
