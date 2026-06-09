@@ -13,7 +13,6 @@ models:
       +materialized: view
 
 vars:
-  stackadapt_sources: []
   stackadapt__advertiser_delivery_passthrough_metrics: []
   stackadapt__campaign_group_delivery_passthrough_metrics: []
   stackadapt__campaign_delivery_passthrough_metrics: []

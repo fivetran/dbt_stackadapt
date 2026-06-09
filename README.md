@@ -68,7 +68,7 @@ packages:
 
 ### Define database and schema variables
 #### Option A: Single connection
-By default, this package runs using your destination and the `stackadapt` schema. If this is not where your Stack Adapt data is (for example, if your Stack Adapt schema is named `stackadapt_fivetran`), add the following configuration to your root `dbt_project.yml` file:
+By default, this package runs using your destination and the `stackadapt` schema. If this is not where your StackAdapt data is (for example, if your StackAdapt schema is named `stackadapt_fivetran`), add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 vars:
@@ -77,7 +77,7 @@ vars:
 ```
 
 #### Option B: Union multiple connections
-If you have multiple Stack Adapt connections in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. For each source table, the package will union all of the data together and pass the unioned table into the transformations. The `source_relation` column in each model indicates the origin of each record.
+If you have multiple StackAdapt connections in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. For each source table, the package will union all of the data together and pass the unioned table into the transformations. The `source_relation` column in each model indicates the origin of each record.
 
 To use this functionality, you will need to set the `stackadapt_sources` variable in your root `dbt_project.yml` file:
 
@@ -100,7 +100,7 @@ vars:
 
 #### Optional: Incorporate unioned sources into DAG
 
-If you use [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt#transformationsfordbtcore) and are unioning multiple Stack Adapt connections, you can define your sources in a property `.yml` file, [using this as a template](https://github.com/fivetran/dbt_stackadapt/blob/main/models/staging/src_stackadapt.yml). Set the variable `has_defined_sources: true` under the Stack Adapt namespace in your `dbt_project.yml`. Otherwise, your Stack Adapt connections won't appear in your DAG. See the `union_connections` macro [documentation](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#optional-union-connections-defined-sources-configuration) for full configuration details.
+If you use [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt#transformationsfordbtcore) and are unioning multiple StackAdapt connections, you can define your sources in a property `.yml` file, [using this as a template](https://github.com/fivetran/dbt_stackadapt/blob/main/models/staging/src_stackadapt.yml). Set the variable `has_defined_sources: true` under the StackAdapt namespace in your `dbt_project.yml`. Otherwise, your StackAdapt connections won't appear in your DAG. See the `union_connections` macro [documentation](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#optional-union-connections-defined-sources-configuration) for full configuration details.
 
 ### (Optional) Additional configurations
 
