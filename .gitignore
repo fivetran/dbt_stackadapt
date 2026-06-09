@@ -77,3 +77,4 @@ env/
 env.bak/
 venv/
 venv.bak/
+worktrees/
