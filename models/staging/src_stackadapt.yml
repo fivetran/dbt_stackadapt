@@ -4,6 +4,8 @@ sources:
   - name: stackadapt
     schema: "{{ var('stackadapt_schema', 'stackadapt') }}"
     database: "{% if target.type != 'spark' %}{{ var('stackadapt_database', target.database) }}{% endif %}"
+    config:
+      enabled: "{{ var('stackadapt_sources', []) == [] }}"
 
     tables:
       - name: advertiser

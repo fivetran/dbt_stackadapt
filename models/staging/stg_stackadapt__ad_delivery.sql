@@ -14,7 +14,7 @@ fields as (
                 staging_columns=get_ad_delivery_columns()
             )
         }}
-        {{ stackadapt.apply_source_relation() }}
+        {{ fivetran_utils.apply_source_relation(package_name='stackadapt') }}
     from base
 
 ),

@@ -1,3 +1,11 @@
+# dbt_stackadapt v0.2.0
+
+[PR #2](https://github.com/fivetran/dbt_stackadapt/pull/2) includes the following updates:
+
+## Under the Hood
+- Migrates the `union_connections`, `apply_source_relation`, and `partition_by_source_relation` macros to the `dbt_fivetran_utils` package.
+- Adds the `fivetran_using_source_casing` variable for case-sensitive destination support. When enabled, downstream transformations respect source casing to ensure consistent results. See the [Additional Configurations](https://github.com/fivetran/dbt_pendo/#source-casing-for-case-sensitive-destinations) section of the README for details.
+
 # dbt_stackadapt v0.1.0
 
 This is the initial release of the `dbt_stackadapt` dbt package.

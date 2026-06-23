@@ -63,11 +63,10 @@ Include the following stackadapt package version in your `packages.yml` file:
 ```yaml
 packages:
   - package: fivetran/stackadapt
-    version: [">=0.1.0", "<0.2.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=0.2.0", "<0.3.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 ### Define database and schema variables
-
 #### Option A: Single connection
 By default, this package runs using your destination and the `stackadapt` schema. If this is not where your StackAdapt data is (for example, if your StackAdapt schema is named `stackadapt_fivetran`), add the following configuration to your root `dbt_project.yml` file:
 
@@ -97,6 +96,12 @@ vars:
         name: connection_2_source_name
 ```
 
+> Previous versions of this package employed two separate, mutually exclusive variables for unioning: `stackadapt_union_schemas` and `stackadapt_union_databases`. While these variables are still supported, `stackadapt_sources` is the recommended variable to configure.
+
+#### Optional: Incorporate unioned sources into DAG
+
+If you use [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt#transformationsfordbtcore) and are unioning multiple StackAdapt connections, you can define your sources in a property `.yml` file, [using this as a template](https://github.com/fivetran/dbt_stackadapt/blob/main/models/staging/src_stackadapt.yml). Set the variable `has_defined_sources: true` under the StackAdapt namespace in your `dbt_project.yml`. Otherwise, your StackAdapt connections won't appear in your DAG. See the `union_connections` macro [documentation](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#optional-union-connections-defined-sources-configuration) for full configuration details.
+
 ### (Optional) Additional configurations
 
 #### Change the build schema
@@ -118,6 +123,14 @@ If an individual source table has a different name than the package expects, add
 ```yml
 vars:
     stackadapt_<default_source_table_name>_identifier: your_table_name
+```
+
+#### Source casing for case-sensitive destinations
+By default, the package applies case-insensitive comparisons when resolving `source_relation` values. If your destination is case-sensitive and you want downstream transformations to respect the exact casing of your source database and schema names, set the following variable:
+
+```yml
+vars:
+    fivetran_using_source_casing: true
 ```
 
 #### Pass through additional metrics
