@@ -1,3 +1,11 @@
+# dbt_stackadapt v0.2.1
+
+[PR #3](https://github.com/fivetran/dbt_stackadapt/pull/3) includes the following updates:
+
+## Feature Updates
+- Adds DuckDB as a supported destination.
+
+
 # dbt_stackadapt v0.2.0
 
 [PR #2](https://github.com/fivetran/dbt_stackadapt/pull/2) includes the following updates:
