@@ -48,11 +48,11 @@ url_fields as (
         {{ dbt.split_part('click_url', "'?'", 1) }} as base_url,
         {{ dbt_utils.get_url_host('click_url') }} as url_host,
         '/' || {{ dbt_utils.get_url_path('click_url') }} as url_path,
-        {{ stackadapt.stackadapt_extract_url_parameter('click_url', 'utm_source') }} as utm_source,
-        {{ stackadapt.stackadapt_extract_url_parameter('click_url', 'utm_medium') }} as utm_medium,
-        {{ stackadapt.stackadapt_extract_url_parameter('click_url', 'utm_campaign') }} as utm_campaign,
-        {{ stackadapt.stackadapt_extract_url_parameter('click_url', 'utm_content') }} as utm_content,
-        {{ stackadapt.stackadapt_extract_url_parameter('click_url', 'utm_term') }} as utm_term
+        {{ dbt_utils.get_url_parameter('click_url', 'utm_source') }} as utm_source,
+        {{ dbt_utils.get_url_parameter('click_url', 'utm_medium') }} as utm_medium,
+        {{ dbt_utils.get_url_parameter('click_url', 'utm_campaign') }} as utm_campaign,
+        {{ dbt_utils.get_url_parameter('click_url', 'utm_content') }} as utm_content,
+        {{ dbt_utils.get_url_parameter('click_url', 'utm_term') }} as utm_term
     from final
 
 )
