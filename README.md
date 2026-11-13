@@ -63,7 +63,7 @@ Include the following stackadapt package version in your `packages.yml` file:
 ```yaml
 packages:
   - package: fivetran/stackadapt
-    version: [">=0.3.0", "<0.4.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=0.4.0", "<0.5.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 ### Define database and schema variables
