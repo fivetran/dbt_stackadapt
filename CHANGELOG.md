@@ -1,3 +1,13 @@
+# dbt_stackadapt v0.3.0
+
+[PR #6](https://github.com/fivetran/dbt_stackadapt/pull/6) includes the following updates:
+
+## Feature Update
+- Raises the minimum dbt version to 1.10.0.
+
+## Under the Hood
+- Audits the yml column documentation against the columns each model outputs. The documentation already matched, so nothing changed.
+
 # dbt_stackadapt v0.2.1
 
 [PR #3](https://github.com/fivetran/dbt_stackadapt/pull/3) includes the following updates:
