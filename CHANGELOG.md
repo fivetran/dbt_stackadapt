@@ -3,7 +3,7 @@
 [PR #6](https://github.com/fivetran/dbt_stackadapt/pull/6) includes the following updates:
 
 ## Feature Update
-- Raises the minimum dbt version to 1.10.0.
+- **Breaking change**: Raises the minimum dbt version to 1.10.0.
 
 # dbt_stackadapt v0.2.1
 
