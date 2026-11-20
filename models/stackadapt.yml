@@ -6,7 +6,7 @@ models:
     columns:
       - name: advertiser_report_key
         description: Surrogate key derived from date_day, advertiser_id, and source_relation.
-        tests:
+        data_tests:
           - not_null
           - unique
       - name: source_relation
@@ -15,12 +15,12 @@ models:
       - name: date_day
         description: >
           {{ doc("date_day") }}
-        tests:
+        data_tests:
           - not_null
       - name: advertiser_id
         description: >
           {{ doc("advertiser_id") }}
-        tests:
+        data_tests:
           - not_null
       - name: advertiser_name
         description: >
@@ -42,7 +42,7 @@ models:
     columns:
       - name: campaign_group_report_key
         description: Surrogate key derived from date_day, campaign_group_id, and source_relation.
-        tests:
+        data_tests:
           - not_null
           - unique
       - name: source_relation
@@ -51,12 +51,12 @@ models:
       - name: date_day
         description: >
           {{ doc("date_day") }}
-        tests:
+        data_tests:
           - not_null
       - name: campaign_group_id
         description: >
           {{ doc("campaign_group_id") }}
-        tests:
+        data_tests:
           - not_null
       - name: campaign_group_name
         description: >
@@ -84,7 +84,7 @@ models:
     columns:
       - name: campaign_report_key
         description: Surrogate key derived from date_day, campaign_id, and source_relation.
-        tests:
+        data_tests:
           - not_null
           - unique
       - name: source_relation
@@ -93,12 +93,12 @@ models:
       - name: date_day
         description: >
           {{ doc("date_day") }}
-        tests:
+        data_tests:
           - not_null
       - name: campaign_id
         description: >
           {{ doc("campaign_id") }}
-        tests:
+        data_tests:
           - not_null
       - name: campaign_name
         description: >
@@ -138,7 +138,7 @@ models:
     columns:
       - name: url_report_key
         description: Surrogate key derived from date_day, ad_id, click_url, and source_relation.
-        tests:
+        data_tests:
           - not_null
           - unique
       - name: source_relation
@@ -147,12 +147,12 @@ models:
       - name: date_day
         description: >
           {{ doc("date_day") }}
-        tests:
+        data_tests:
           - not_null
       - name: ad_id
         description: >
           {{ doc("ad_id") }}
-        tests:
+        data_tests:
           - not_null
       - name: ad_name
         description: >
@@ -172,7 +172,7 @@ models:
       - name: click_url
         description: >
           {{ doc("click_url") }}
-        tests:
+        data_tests:
           - not_null
       - name: base_url
         description: >
@@ -212,7 +212,7 @@ models:
     columns:
       - name: ad_report_key
         description: Surrogate key derived from date_day, ad_id, and source_relation.
-        tests:
+        data_tests:
           - not_null
           - unique
       - name: source_relation
@@ -221,12 +221,12 @@ models:
       - name: date_day
         description: >
           {{ doc("date_day") }}
-        tests:
+        data_tests:
           - not_null
       - name: ad_id
         description: >
           {{ doc("ad_id") }}
-        tests:
+        data_tests:
           - not_null
       - name: ad_name
         description: >
